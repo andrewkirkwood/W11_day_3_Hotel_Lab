@@ -35,22 +35,35 @@ public class BedroomTest {
     }
 
     @Test
-    public void  check_room_has_cost_per_night(){
+    public void check_room_has_cost_per_night(){
         assertEquals(20, bedroom1.getCostPerNight());
     }
 
     @Test
-    public void check_room_can_add_guest_to_bedroom_when_capacity_is_available(){
+    public void can_set_availability_to_FALSE(){
+        bedroom1.setAvailablity(false);
+        assertEquals(false, bedroom1.isAvailable());
+    }
+
+    @Test
+    public void check_room_can_add_guest_to_bedroom_when__ENOUGH_capacity_and_availability(){
         bedroom1.addGuest(guest1);
         assertEquals(1, bedroom1.getNumberOfGuests());
     }
 
     @Test
-    public void check_room_can_add_guest_to_bedroom_when_capacity_is_NOT_available(){
+    public void check_room_cannot_add_guest_to_bedroom_when_capacity_REACHED(){
         bedroom1.addGuest(guest1);
         bedroom1.addGuest(guest1);
         bedroom1.addGuest(guest1);
         assertEquals(2, bedroom1.getNumberOfGuests());
+    }
+
+    @Test
+    public void check_room_cannot_add_guest_to_bedroom_when_capacity_OKAY_but_room_NOT_available(){
+        bedroom1.setAvailablity(false);
+        bedroom1.addGuest(guest1);
+        assertEquals(0, bedroom1.getNumberOfGuests());
     }
 
     @Test

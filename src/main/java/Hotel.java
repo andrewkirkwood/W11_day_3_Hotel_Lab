@@ -26,4 +26,5 @@ public class Hotel {
     public void addConferenceRoom(ConferenceRoom conferenceRoom) {
         this.conferenceRooms.add(conferenceRoom);
     }
+
 }

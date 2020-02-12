@@ -6,6 +6,7 @@ public class Bedroom {
     private ArrayList<Guest> guests;
     private String type;
     private int costPerNight;
+    private boolean isAvailable;
 
     public Bedroom(int roomNumber, int capacity, String type, int costPerNight){
         this.roomNumber = roomNumber;
@@ -13,6 +14,7 @@ public class Bedroom {
         this.guests = new ArrayList<Guest>();
         this.type = type;
         this.costPerNight = costPerNight;
+        this.isAvailable = true;
     }
 
     public int getRoomNumber() {
@@ -31,13 +33,20 @@ public class Bedroom {
         return type;
     }
 
-
     public int getCostPerNight() {
         return this.costPerNight;
     }
 
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailablity(boolean available) {
+        this.isAvailable = available;
+    }
+
     public void addGuest(Guest guest) {
-        if(getNumberOfGuests() < this.capacity){
+        if(getNumberOfGuests() < this.capacity && isAvailable()){
             this.guests.add(guest);
         }
     }

@@ -36,5 +36,10 @@ public class HotelTest {
         hotel1.addConferenceRoom(conferenceRoom1);
         assertEquals(1, hotel1.getTotalConferenceRooms());
     }
+
+    @Test
+    public void can_check_in_guest(){
+
+    }
 }
 
