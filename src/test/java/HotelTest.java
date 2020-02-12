@@ -1,11 +1,15 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class HotelTest {
     private Hotel hotel1;
     private Bedroom bedroom1;
+    private Bedroom bedroom2;
+    private Bedroom bedroom3;
     private ConferenceRoom conferenceRoom1;
     private Guest guest1;
 
@@ -13,6 +17,8 @@ public class HotelTest {
     public void before(){
         hotel1 = new Hotel();
         bedroom1 = new Bedroom(2, 2, "double", 20);
+        bedroom2 = new Bedroom(2, 2, "double", 20);
+        bedroom3 = new Bedroom(2, 2, "double", 20);
         conferenceRoom1 = new ConferenceRoom(10, "Castle View", 100);
         guest1 = new Guest("Blurb");
     }
@@ -81,6 +87,28 @@ public class HotelTest {
     public void can_get_total_bill_for_booking(){
         Booking booking1 = hotel1.createBooking( bedroom1, 8, guest1);
         assertEquals(160, hotel1.getBookingTotalCost(booking1));
+    }
+
+    @Test
+    public void check_if_available_rooms_are_returned_true(){
+        hotel1.addBedroom(bedroom1);
+        hotel1.addBedroom(bedroom2);
+        hotel1.addBedroom(bedroom3);
+        bedroom2.setAvailability(false);
+//        assertEquals(2, hotel1.getAvailableBedrooms());
+        ArrayList<Bedroom> availableBedrooms = new ArrayList<Bedroom>();
+        availableBedrooms.add(bedroom1);
+        availableBedrooms.add(bedroom3);
+        assertEquals(true, hotel1.getAvailableBedrooms().equals(availableBedrooms));
+    }
+
+    @Test
+    public void check_number_of_available_rooms(){
+        hotel1.addBedroom(bedroom1);
+        hotel1.addBedroom(bedroom2);
+        hotel1.addBedroom(bedroom3);
+        bedroom2.setAvailability(false);
+        assertEquals(2, hotel1.getAvailableBedroomsQuantity());
     }
 
 }

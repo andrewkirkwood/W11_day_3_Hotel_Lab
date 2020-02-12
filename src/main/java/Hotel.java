@@ -70,4 +70,24 @@ public class Hotel {
     public int getBookingTotalCost(Booking booking) {
         return booking.getBedroom().getCostPerNight() * booking.getTotalNights();
     }
+
+    public int getAvailableBedroomsQuantity() {
+        int total = 0;
+        for(Bedroom bedroom : this.bedrooms){
+            if(bedroom.isAvailable()){
+                total += 1;
+            }
+        }
+        return total;
+    }
+
+    public ArrayList<Bedroom> getAvailableBedrooms(){
+        ArrayList<Bedroom> availableBedrooms = new ArrayList<Bedroom>();
+        for(Bedroom bedroom : this.bedrooms){
+            if(bedroom.isAvailable()){
+                availableBedrooms.add(bedroom);
+            }
+        }
+        return availableBedrooms;
+    }
 }
