@@ -5,12 +5,14 @@ public class Bedroom {
     private int capacity;
     private ArrayList<Guest> guests;
     private String type;
+    private int costPerNight;
 
-    public Bedroom(int roomNumber, int capacity, String type){
+    public Bedroom(int roomNumber, int capacity, String type, int costPerNight){
         this.roomNumber = roomNumber;
         this.capacity = capacity;
         this.guests = new ArrayList<Guest>();
         this.type = type;
+        this.costPerNight = costPerNight;
     }
 
     public int getRoomNumber() {
@@ -21,8 +23,8 @@ public class Bedroom {
         return capacity;
     }
 
-    public ArrayList<Guest> getGuests() {
-        return guests;
+    public int getNumberOfGuests() {
+        return guests.size();
     }
 
     public String getType() {
@@ -30,4 +32,7 @@ public class Bedroom {
     }
 
 
+    public int getCostPerNight() {
+        return this.costPerNight;
+    }
 }
