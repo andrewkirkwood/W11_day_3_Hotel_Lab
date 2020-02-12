@@ -40,9 +40,17 @@ public class BedroomTest {
     }
 
     @Test
-    public void check_room_can_add_guest_to_bedroom(){
+    public void check_room_can_add_guest_to_bedroom_when_capacity_is_available(){
         bedroom1.addGuest(guest1);
         assertEquals(1, bedroom1.getNumberOfGuests());
+    }
+
+    @Test
+    public void check_room_can_add_guest_to_bedroom_when_capacity_is_NOT_available(){
+        bedroom1.addGuest(guest1);
+        bedroom1.addGuest(guest1);
+        bedroom1.addGuest(guest1);
+        assertEquals(2, bedroom1.getNumberOfGuests());
     }
 
     @Test

@@ -10,9 +10,8 @@ public class ConferenceRoomTest {
 
     @Before
     public void before(){
-        conferenceRoom1 = new ConferenceRoom(10, "Castle View", 100);
+        conferenceRoom1 = new ConferenceRoom(4, "Castle View", 100);
         guest1 = new Guest("Sam");
-
     }
 
     @Test
@@ -21,9 +20,18 @@ public class ConferenceRoomTest {
     }
 
     @Test
-    public void can_add_guest(){
+    public void can_add_guest_when_capacity_is_available(){
         conferenceRoom1.addGuest(guest1);
         assertEquals(1, conferenceRoom1.getNumberOfGuests());
+    }
+    @Test
+    public void can_add_guest_when_capacity_is_NOT_available(){
+        conferenceRoom1.addGuest(guest1);
+        conferenceRoom1.addGuest(guest1);
+        conferenceRoom1.addGuest(guest1);
+        conferenceRoom1.addGuest(guest1);
+        conferenceRoom1.addGuest(guest1);
+        assertEquals(4, conferenceRoom1.getNumberOfGuests());
     }
 
     @Test
