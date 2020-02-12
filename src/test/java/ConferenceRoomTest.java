@@ -25,13 +25,20 @@ public class ConferenceRoomTest {
         assertEquals(1, conferenceRoom1.getNumberOfGuests());
     }
     @Test
-    public void can_add_guest_when_capacity_is_NOT_available(){
+    public void cannot_add_guest_when_capacity_REACHED(){
         conferenceRoom1.addGuest(guest1);
         conferenceRoom1.addGuest(guest1);
         conferenceRoom1.addGuest(guest1);
         conferenceRoom1.addGuest(guest1);
         conferenceRoom1.addGuest(guest1);
         assertEquals(4, conferenceRoom1.getNumberOfGuests());
+    }
+
+    @Test
+    public void cannot_add_guest_when_capacity_OKAY_but_availability_FALSE(){
+        conferenceRoom1.setAvailability(false);
+        conferenceRoom1.addGuest(guest1);
+        assertEquals(0, conferenceRoom1.getNumberOfGuests());
     }
 
     @Test

@@ -40,6 +40,7 @@ public class HotelTest {
     @Test
     public void can_check_in_guest(){
 
+
     }
 }
 

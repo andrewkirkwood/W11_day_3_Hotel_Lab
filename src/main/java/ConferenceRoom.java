@@ -5,12 +5,22 @@ public class ConferenceRoom {
     private ArrayList<Guest> guests;
     private String name;
     private int costPerDay;
+    private boolean isAvailable;
 
     public ConferenceRoom(int capacity, String name, int costPerDay){
         this.capacity = capacity;
         this.guests = new ArrayList<Guest>();
         this.name = name;
         this.costPerDay = costPerDay;
+        this.isAvailable = true;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailability(boolean available) {
+        isAvailable = available;
     }
 
     public int getNumberOfGuests() {
@@ -18,7 +28,7 @@ public class ConferenceRoom {
     }
 
     public void addGuest(Guest guest) {
-        if(getNumberOfGuests() < this.capacity){
+        if(getNumberOfGuests() < this.capacity && isAvailable()){
             this.guests.add(guest);
         }
     }
