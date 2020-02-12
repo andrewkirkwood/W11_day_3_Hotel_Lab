@@ -41,7 +41,7 @@ public class Bedroom {
         return isAvailable;
     }
 
-    public void setAvailablity(boolean available) {
+    public void setAvailability(boolean available) {
         this.isAvailable = available;
     }
 

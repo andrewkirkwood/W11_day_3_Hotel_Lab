@@ -41,7 +41,7 @@ public class BedroomTest {
 
     @Test
     public void can_set_availability_to_FALSE(){
-        bedroom1.setAvailablity(false);
+        bedroom1.setAvailability(false);
         assertEquals(false, bedroom1.isAvailable());
     }
 
@@ -61,7 +61,7 @@ public class BedroomTest {
 
     @Test
     public void check_room_cannot_add_guest_to_bedroom_when_capacity_OKAY_but_room_NOT_available(){
-        bedroom1.setAvailablity(false);
+        bedroom1.setAvailability(false);
         bedroom1.addGuest(guest1);
         assertEquals(0, bedroom1.getNumberOfGuests());
     }

@@ -5,6 +5,11 @@ public class ConferenceRoom {
     private ArrayList<Guest> guests;
     private String name;
     private int costPerDay;
+
+    public int getCapacity() {
+        return capacity;
+    }
+
     private boolean isAvailable;
 
     public ConferenceRoom(int capacity, String name, int costPerDay){

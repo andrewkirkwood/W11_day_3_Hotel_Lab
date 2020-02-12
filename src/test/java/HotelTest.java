@@ -7,12 +7,14 @@ public class HotelTest {
     private Hotel hotel1;
     private Bedroom bedroom1;
     private ConferenceRoom conferenceRoom1;
+    private Guest guest1;
 
     @Before
     public void before(){
         hotel1 = new Hotel();
         bedroom1 = new Bedroom(2, 2, "double", 20);
         conferenceRoom1 = new ConferenceRoom(10, "Castle View", 100);
+        guest1 = new Guest("Blurb");
     }
 
     @Test
@@ -38,9 +40,26 @@ public class HotelTest {
     }
 
     @Test
-    public void can_check_in_guest(){
-
-
+    public void can_check_in_guest_to_bedroom(){
+        hotel1.checkInGuest(guest1, bedroom1);
+        assertEquals(1, bedroom1.getNumberOfGuests());
+        assertEquals(false, bedroom1.isAvailable());
     }
+
+    @Test
+    public void can_check_in_guest_to_conference_room(){
+        hotel1.checkInGuest(guest1, conferenceRoom1);
+        assertEquals(1, conferenceRoom1.getNumberOfGuests());
+        assertEquals(false, conferenceRoom1.isAvailable());
+    }
+
+    @Test
+    public void can_check_out_guest_from_bedroom(){
+        hotel1.checkInGuest(guest1, bedroom1);
+        hotel1.checkOutGuest(guest1, bedroom1);
+        assertEquals(0, bedroom1.getNumberOfGuests());
+        assertEquals(true, bedroom1.isAvailable());
+    }
+
 }
 

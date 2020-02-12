@@ -27,4 +27,24 @@ public class Hotel {
         this.conferenceRooms.add(conferenceRoom);
     }
 
+    public void checkInGuest(Guest guest, Bedroom bedroom) {
+        if(bedroom.isAvailable() && bedroom.getCapacity() > bedroom.getNumberOfGuests()){
+            bedroom.addGuest(guest);
+            bedroom.setAvailability(false);
+        }
+    }
+
+    public void checkInGuest(Guest guest, ConferenceRoom conferenceRoom) {
+        if(conferenceRoom.isAvailable() && conferenceRoom.getCapacity() > conferenceRoom.getNumberOfGuests()){
+            conferenceRoom.addGuest(guest);
+            conferenceRoom.setAvailability(false);
+        }
+    }
+
+    public void checkOutGuest(Guest guest, Bedroom bedroom) {
+        if(bedroom.getNumberOfGuests() > 0){
+            bedroom.removeGuest(guest);
+            bedroom.setAvailability(true);
+        }
+    }
 }
