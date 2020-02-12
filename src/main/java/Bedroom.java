@@ -35,4 +35,12 @@ public class Bedroom {
     public int getCostPerNight() {
         return this.costPerNight;
     }
+
+    public void addGuest(Guest guest) {
+        this.guests.add(guest);
+    }
+
+    public void removeGuest(Guest guest) {
+        this.guests.remove(guest);
+    }
 }
