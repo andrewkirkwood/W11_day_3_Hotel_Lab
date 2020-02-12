@@ -61,5 +61,27 @@ public class HotelTest {
         assertEquals(true, bedroom1.isAvailable());
     }
 
+    @Test
+    public void can_add_to_bookings_list(){
+        // returns a booking
+        Booking booking1 = hotel1.createBooking( bedroom1, 8, guest1);
+        assertEquals(1, hotel1.getTotalBookings());
+//        booking1 = new Booking(bedroom1, 8, guest1);
+
+
+    }
+
+    @Test
+    public void can_create_booking(){
+        Booking booking1 = hotel1.createBooking( bedroom1, 8, guest1);
+        assertEquals(true, hotel1.getBooking(booking1));
+    }
+
+    @Test
+    public void can_get_total_bill_for_booking(){
+        Booking booking1 = hotel1.createBooking( bedroom1, 8, guest1);
+        assertEquals(160, hotel1.getBookingTotalCost(booking1));
+    }
+
 }
 
